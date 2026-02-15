@@ -14,6 +14,11 @@ layout: default
   </div>
 
   {% if page.comments != false %}
+    <div class="comment-guidelines">
+      Comments are welcome. Please follow the
+      <a href="{{ site.baseurl }}/coc/">Code of Conduct</a>.
+    </div>
+
     <div class="giscus"></div>
 
     <script src="https://giscus.app/client.js"
@@ -33,3 +38,4 @@ layout: default
     </script>
   {% endif %}
 </article>
+
