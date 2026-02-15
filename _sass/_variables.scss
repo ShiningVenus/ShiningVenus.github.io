@@ -1,11 +1,26 @@
-// Moonlock Soft Theme
+//
+// VARIABLES
+//
 
-$white: #f9f6ff;
-$black: #15111f;
+// Colors
+$blue: #4183C4;
 
-$lightGray: #ede7ff;
-$gray: #8c7fa6;
-$darkGray: #3a2f52;
-$darkerGray: #2a1f40;
+// Grays
+$black: #000;
+$darkerGray: #222;
+$darkGray: #333;
+$gray: #666;
+$lightGray: #eee;
+$white: #fff;
 
-$blue: #8a6bff; // Primary accent
+// Font stacks
+$helvetica: Helvetica, Arial, sans-serif;
+$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$georgia: Georgia, serif;
+
+// Mobile breakpoints
+@mixin mobile {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
