@@ -13,5 +13,23 @@ layout: default
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
 
-  {% include disqus.html %}
+  {% if page.comments != false %}
+    <div class="giscus"></div>
+
+    <script src="https://giscus.app/client.js"
+            data-repo="ShiningVenus/ShiningVenus.github.io"
+            data-repo-id="R_kgDORQj_Tw"
+            data-category-id="DIC_kwDORQj_T84C2dmD"
+            data-mapping="pathname"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  {% endif %}
 </article>
