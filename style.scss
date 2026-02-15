@@ -287,3 +287,82 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+/*************************/
+/* MOONLOCK THEME LAYER */
+/*************************/
+
+body {
+  background: $white;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.masthead {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.posts > .post {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.wrapper-footer {
+  background-color: $lightGray;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.post blockquote {
+  border-left: 4px solid $blue;
+  background: rgba(138, 107, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.5em 1em;
+}
+
+/*************************/
+/* AUTO DARK MODE */
+/*************************/
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f0b16;
+    color: #e9e4f5;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .site-name {
+    color: #f5f1ff;
+  }
+
+  .site-description,
+  .date {
+    color: #bfb2d6;
+  }
+
+  a {
+    color: #b9a6ff;
+  }
+
+  .masthead,
+  .posts > .post,
+  .wrapper-footer {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .wrapper-footer {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .post blockquote {
+    border-left-color: #b9a6ff;
+    background: rgba(185, 166, 255, 0.08);
+  }
+}
+
