@@ -18,46 +18,45 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
+  background: $white;
+  font: 18px/1.6 $helvetica;
   color: $darkGray;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
+  max-width: 760px;
+  padding: 0 14px;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
-  font-weight: bold;
+  font-weight: 700;
 
-  line-height: 1.7;
-  margin: 1em 0 15px;
+  line-height: 1.35;
+  margin: 1.2em 0 0.6em;
   padding: 0;
 
   @include mobile {
-    line-height: 1.4;
+    line-height: 1.25;
   }
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 34px;
+  letter-spacing: 0.2px;
+
   a {
     color: inherit;
   }
 }
 
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
+h2 { font-size: 26px; }
+h3 { font-size: 21px; }
 
 h4 {
   font-size: 18px;
@@ -65,15 +64,20 @@ h4 {
 }
 
 p {
-  margin: 15px 0;
+  margin: 16px 0;
 }
 
 a {
   color: $blue;
   text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
+  cursor: pointer;
+  transition: color 0.18s ease, text-shadow 0.18s ease;
+
+  &:hover,
+  &:active {
     color: $blue;
+    text-decoration: underline;
+    text-shadow: 0 0 4px rgba(138, 107, 255, 0.25);
   }
 }
 
@@ -82,32 +86,19 @@ ul, ol {
   padding-left: 30px;
 }
 
-ul {
-  list-style-type: disc;
-}
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
 
-ol {
-  list-style-type: decimal;
-}
+ol ul, ul ol, ul ul, ol ol { margin: 0; }
+ul ul, ol ul { list-style-type: circle; }
 
-ol ul, ul ol, ul ul, ol ol {
-  margin: 0;
-}
-
-ul ul, ol ul {
-  list-style-type: circle;
-}
-
-em, i {
-  font-style: italic;
-}
-
-strong, b {
-  font-weight: bold;
-}
+em, i { font-style: italic; }
+strong, b { font-weight: bold; }
 
 img {
   max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 // Fixes images in popup boxes from Google Translate
@@ -120,7 +111,7 @@ img {
   color: $gray;
 }
 
-// Specify the color of the selection
+/* Selection */
 ::-moz-selection {
   color: $black;
   background: $lightGray;
@@ -130,33 +121,38 @@ img {
   background: $lightGray;
 }
 
-// Nicolas Gallagher's micro clearfix hack
-// http://nicolasgallagher.com/micro-clearfix-hack/
+/* Micro clearfix */
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
-
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
 
+/* Subtle page glow */
+.wrapper-masthead,
+.container,
+.wrapper-footer {
+  position: relative;
+}
+
 //
 // .masthead
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: 44px;
 }
 
 .masthead {
-  padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
   @include mobile {
     text-align: center;
@@ -165,18 +161,19 @@ img {
 
 .site-avatar {
   float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
+  width: 72px;
+  height: 72px;
+  margin-right: 16px;
 
   @include mobile {
     float: none;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 10px;
   }
 
   img {
-    border-radius: 5px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(21, 17, 31, 0.08);
   }
 }
 
@@ -192,46 +189,57 @@ img {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: $darkerGray;
   cursor: pointer;
   font-family: $helveticaNeue;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 28px;
-  letter-spacing: 1px;
+  letter-spacing: 0.6px;
 }
 
 .site-description {
-  margin: -5px 0 0 0;
+  margin: 2px 0 0 0;
   color: $gray;
   font-size: 16px;
 
   @include mobile {
-    margin: 3px 0;
+    margin: 6px 0 0 0;
   }
 }
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 26px;
   font-family: $helveticaNeue;
-  font-size: 18px;
+  font-size: 17px;
 
   @include mobile {
     float: none;
-    margin-top: 9px;
+    margin-top: 12px;
     display: block;
     font-size: 16px;
   }
 
   a {
-    margin-left: 20px;
+    margin-left: 18px;
     color: $darkGray;
     text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    transition: background 0.18s ease, color 0.18s ease;
+
+    &:hover,
+    &:active {
+      background: rgba(138, 107, 255, 0.10);
+      color: $darkerGray;
+      text-decoration: none;
+      text-shadow: none;
+    }
 
     @include mobile {
-      margin: 0 10px;
+      margin: 0 8px;
       color: $blue;
     }
   }
@@ -242,23 +250,50 @@ nav {
 //
 
 .posts > .post {
-  padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  padding-bottom: 2.2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .posts > .post:last-child {
-  padding-bottom: 1em;
+  padding-bottom: 1.2em;
   border-bottom: none;
 }
 
 .post {
+  /* Give posts a soft card feel without breaking Jekyll Now layout */
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 14px 40px rgba(21, 17, 31, 0.06);
+  margin: 0 0 22px;
+
+  @include mobile {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+
   blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
+    margin: 1.6em 0;
+    border-left: 4px solid $blue;
+    padding: 0.7em 1em;
     color: $gray;
-    font-size: 22px;
+    font-size: 20px;
     font-style: italic;
+    background: rgba(138, 107, 255, 0.06);
+    border-radius: 12px;
+  }
+
+  code {
+    padding: 0.15em 0.35em;
+    border-radius: 8px;
+    background: rgba(138, 107, 255, 0.08);
+  }
+
+  pre {
+    padding: 14px 16px;
+    border-radius: 14px;
+    overflow: auto;
+    background: rgba(138, 107, 255, 0.07);
   }
 
   .comments {
@@ -267,23 +302,105 @@ nav {
 
   .read-more {
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+    font-weight: 700;
   }
 }
 
 .wrapper-footer {
-  margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  margin-top: 54px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   background-color: $lightGray;
 }
 
 footer {
-  padding: 20px 0;
+  padding: 22px 0;
   text-align: center;
+  color: $gray;
+  font-size: 15px;
+}
+
+/*************************/
+/* AUTO DARK MODE */
+/*************************/
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f0b16;
+    color: #e9e4f5;
+  }
+
+  ::-moz-selection {
+    color: #0f0b16;
+    background: rgba(185, 166, 255, 0.35);
+  }
+  ::selection {
+    color: #0f0b16;
+    background: rgba(185, 166, 255, 0.35);
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .site-name {
+    color: #f5f1ff;
+  }
+
+  .site-description,
+  .date,
+  footer {
+    color: #bfb2d6;
+  }
+
+  a {
+    color: #b9a6ff;
+
+    &:hover,
+    &:active {
+      text-shadow: 0 0 6px rgba(185, 166, 255, 0.30);
+    }
+  }
+
+  .masthead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .posts > .post {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .post {
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  .post blockquote {
+    color: #cbbfe2;
+    background: rgba(185, 166, 255, 0.08);
+    border-left-color: #b9a6ff;
+  }
+
+  .wrapper-footer {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  nav a {
+    color: #e9e4f5;
+
+    &:hover,
+    &:active {
+      background: rgba(185, 166, 255, 0.12);
+      color: #ffffff;
+    }
+
+    @include mobile {
+      color: #b9a6ff;
+    }
+  }
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
