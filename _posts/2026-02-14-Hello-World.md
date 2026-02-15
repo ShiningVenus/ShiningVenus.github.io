@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello, World"
+title: "Hello World"
 date: 2026-02-14
 categories: blog
 tags: [welcome, introduction]
