@@ -404,3 +404,20 @@ footer {
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 @import "highlights";
 @import "svg-icons";
+
+.comment-guidelines {
+  margin-top: 36px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: $gray;
+  text-align: center;
+}
+
+.comment-guidelines a {
+  color: $blue;
+  font-weight: 600;
+}
+
+.comment-guidelines a:hover {
+  text-decoration: underline;
+}
