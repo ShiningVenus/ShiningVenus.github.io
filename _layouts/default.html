@@ -9,6 +9,48 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <script>
+      (function () {
+        var storageKey = 'theme-preference';
+        var root = document.documentElement;
+        var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function normalizePreference(value) {
+          return value === 'light' || value === 'dark' || value === 'auto' ? value : 'auto';
+        }
+
+        function resolveTheme(preference) {
+          return preference === 'auto' ? (mediaQuery.matches ? 'dark' : 'light') : preference;
+        }
+
+        function applyTheme(theme) {
+          root.setAttribute('data-theme', theme);
+          root.style.colorScheme = theme;
+        }
+
+        function setThemePreference(nextPreference) {
+          var preference = normalizePreference(nextPreference);
+          localStorage.setItem(storageKey, preference);
+          applyTheme(resolveTheme(preference));
+        }
+
+        var initialPreference = normalizePreference(localStorage.getItem(storageKey));
+        applyTheme(resolveTheme(initialPreference));
+
+        window.getThemePreference = function () {
+          return normalizePreference(localStorage.getItem(storageKey));
+        };
+
+        window.setThemePreference = setThemePreference;
+
+        mediaQuery.addEventListener('change', function () {
+          if (window.getThemePreference() === 'auto') {
+            applyTheme(resolveTheme('auto'));
+          }
+        });
+      })();
+    </script>
+
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
