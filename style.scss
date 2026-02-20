@@ -322,11 +322,81 @@ footer {
   font-size: 15px;
 }
 
-/*************************/
-/* AUTO DARK MODE */
-/*************************/
+/****************/
+/* THEME MODES */
+/****************/
 
-@media (prefers-color-scheme: dark) {
+html[data-theme="light"] {
+  body {
+    background: $white;
+    color: $darkGray;
+  }
+
+  ::-moz-selection {
+    color: $black;
+    background: $lightGray;
+  }
+  ::selection {
+    color: $black;
+    background: $lightGray;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .site-name {
+    color: $darkerGray;
+  }
+
+  .site-description,
+  .date,
+  footer {
+    color: $gray;
+  }
+
+  a {
+    color: $blue;
+  }
+
+  .masthead {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .posts > .post {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .post {
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 14px 40px rgba(21, 17, 31, 0.06);
+  }
+
+  .post blockquote {
+    color: $gray;
+    background: rgba(138, 107, 255, 0.06);
+    border-left-color: $blue;
+  }
+
+  .wrapper-footer {
+    background-color: $lightGray;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  nav a {
+    color: $darkGray;
+
+    &:hover,
+    &:active {
+      background: rgba(138, 107, 255, 0.10);
+      color: $darkerGray;
+    }
+
+    @include mobile {
+      color: $blue;
+    }
+  }
+}
+
+html[data-theme="dark"] {
   body {
     background: #0f0b16;
     color: #e9e4f5;
